@@ -1,0 +1,6 @@
+docker-compose.yml
+Jenkinsfile
+.git
+main.tf
+make.sh
+build.sh
