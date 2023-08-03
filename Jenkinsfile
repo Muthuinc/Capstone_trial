@@ -15,14 +15,14 @@ pipeline {
 
         stage ('push') {
             steps{ 
-               sh ' ./build.sh '
+               sh ' ./push.sh '
             }
         }
 
         stage ('create') {
-            when {
-                changelog 'main.tf'
-            }
+            //when {
+              //  changelog 'main.tf'
+            //}
             steps{ 
                script {
                     withCredentials([sshUserPrivateKey(credentialsId: 'Avamumbai', keyFileVariable: 'SSH_KEY', usernameVariable: 'ubuntu')]) {
