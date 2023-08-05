@@ -2,8 +2,6 @@ FROM node:14 As build
 
 WORKDIR /muthu
 
-ENV GIT_COMMIT=${GIT_COMMIT}
-
 COPY *.json .
 
 RUN npm install
