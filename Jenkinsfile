@@ -34,9 +34,6 @@ pipeline {
         }
 
         stage ('deploy') {
-            environment {
-                    GIT_COMMIT = sh(script: 'git rev-parse --short HEAD', returnStdout: true).trim()
-            }
             steps{
                script {
                     withCredentials([sshUserPrivateKey(credentialsId: 'Avamumbai', keyFileVariable: 'SSH_KEY', usernameVariable: 'ubuntu')]) {
