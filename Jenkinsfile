@@ -8,12 +8,18 @@ pipeline {
 
     stages {
         stage ('build') {
+            when {
+                equals(actual: currentBuild.number, expected: 1)
+            }
             steps {
                 sh './build.sh'         
             }
         }
 
         stage ('push') {
+            when {
+                equals(actual: currentBuild.number, expected: 1)
+            }
             steps{ 
                sh ' ./push.sh '
             }
@@ -33,6 +39,9 @@ pipeline {
         }
 
         stage ('deploy') {
+            when {
+                equals(actual: currentBuild.number, expected: 1)
+            }
             steps{ 
                script {
                     withCredentials([sshUserPrivateKey(credentialsId: 'Avamumbai', keyFileVariable: 'SSH_KEY', usernameVariable: 'ubuntu')]) {
