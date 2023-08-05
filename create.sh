@@ -1,7 +1,7 @@
 #! /bin/bash
 
-export AWS_ACCESS_KEY_ID="${AWS_ACCESS_KEY_ID}"
-export AWS_SECRET_ACCESS_KEY="${AWS_SECRET_ACCESS_KEY}"
+#export AWS_ACCESS_KEY_ID="${AWS_ACCESS_KEY_ID}"
+#export AWS_SECRET_ACCESS_KEY="${AWS_SECRET_ACCESS_KEY}"
 
 terraform init && terraform apply --auto-approve
 
@@ -11,16 +11,16 @@ a=$(aws ec2 describe-instances --region ap-south-1 --filters "Name=tag:Env,Value
 
 export psw1="$1"
 
-scp -o StrictHostKeyChecking=no -i "$psw1" docker-compose.yml ubuntu@$a:/home/ubuntu
+scp -o StrictHostKeyChecking=no -i "$SSHKEY" docker-compose.yml ubuntu@$a:/home/ubuntu
 
-ssh -o StrictHostKeyChecking=no -i "$psw1" ubuntu@$a <<EOF
+#ssh -o StrictHostKeyChecking=no -i "$psw1" ubuntu@$a <<EOF
 
-sudo apt update -y 
+#sudo apt update -y 
 
-sudo apt install -y docker.io
+#sudo apt install -y docker.io
 
-sudo apt install -y docker-compose
+#sudo apt install -y docker-compose
 
-EOF
+#EOF
 
 
