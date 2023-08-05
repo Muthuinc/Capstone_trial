@@ -11,18 +11,18 @@ a=$(aws ec2 describe-instances --region ap-south-1 --filters "Name=tag:Env,Value
 
 echo "$a"
 
-export psw1="$1"
+#export psw1="$1"
 
 scp -o StrictHostKeyChecking=no -i "$SSH_KEY" docker-compose.yml "$ubuntu"@$a:/home/ubuntu
 
-#ssh -o StrictHostKeyChecking=no -i "$psw1" ubuntu@$a <<EOF
+ssh -o StrictHostKeyChecking=no -i "$SSH_KEY" "$ubuntu"@$a <<EOF
 
-#sudo apt update -y 
+sudo apt update -y 
 
-#sudo apt install -y docker.io
+sudo apt install -y docker.io
 
-#sudo apt install -y docker-compose
+sudo apt install -y docker-compose
 
-#EOF
+EOF
 
 
