@@ -8,14 +8,12 @@ pipeline {
 
     stages {
         stage ('build') {
-            }
             steps {
                 sh './build.sh'         
             }
         }
 
         stage ('push') {
-            }
             steps{ 
                sh ' ./push.sh '
             }
@@ -35,7 +33,6 @@ pipeline {
         }
 
         stage ('deploy') {
-            }
             steps{ 
                script {
                     withCredentials([sshUserPrivateKey(credentialsId: 'Avamumbai', keyFileVariable: 'SSH_KEY', usernameVariable: 'ubuntu')]) {
