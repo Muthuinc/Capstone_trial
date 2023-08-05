@@ -8,7 +8,7 @@ export psw1="$1"
 ssh -o StrictHostKeyChecking=no -i "$SSH_KEY" "$ubuntu"@$a <<EOF
 
 
-GIT_COMMIT=$GIT_COMMIT docker-compose up -d
+sudo GIT_COMMIT=$GIT_COMMIT docker-compose up -d
 
 
 if curl localhost:80
