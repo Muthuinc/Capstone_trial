@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'ubuntu' }
+    agent any
     environment {
         AWS_ACCESS_KEY_ID = credentials('AWS secret access ID')
         AWS_SECRET_ACCESS_KEY = credentials('AWS sceret access key')
