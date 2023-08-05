@@ -5,5 +5,3 @@ services:
     container_name: muthu
     ports:
       - "80:80"
-    environment:
-      GIT_COMMIT: ${GIT_COMMIT}
