@@ -32,7 +32,7 @@ pipeline {
             steps{ 
                script {
                     withCredentials([sshUserPrivateKey(credentialsId: 'Avamumbai', keyFileVariable: 'SSH_KEY', usernameVariable: 'ubuntu')]) {
-                        sh "./create.sh '$SSH_KEY' "
+                        sh "./create.sh  "
                     }
                }
             }
