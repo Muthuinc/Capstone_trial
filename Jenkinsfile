@@ -4,6 +4,7 @@ pipeline {
         AWS_ACCESS_KEY_ID = credentials('AWS secret access ID')
         AWS_SECRET_ACCESS_KEY = credentials('AWS sceret access key')
         DOCKER_CRED = credentials('Docker')
+         GIT_COMMIT = sh(script: 'git rev-parse --short HEAD', returnStdout: true).trim()
     }
 
     stages {
