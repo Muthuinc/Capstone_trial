@@ -6,13 +6,13 @@ services:
     ports:
       - "9115:9115"
     volumes:
-      - /home/ubuntu/blackbox:blackbox.yml:/etc/blackbox_exporter/config.yml
+      - /home/ubuntu/blackbox.yml:/etc/blackbox_exporter/config.yml
 
   prometheus:
     image: prom/prometheus
     container_name: prometheus
     volumes:
-      - /home/ubuntu/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - /home/ubuntu/prometheus.yml:/etc/prometheus/prometheus.yml
     ports:
       - "9090:9090"
 
@@ -22,7 +22,7 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - /home/ubuntu/grafana:/etc/grafana/
+      - /home/ubuntu:/etc/grafana/
 
   node-exporter:
     image: prom/node-exporter
