@@ -25,6 +25,8 @@ sudo apt install -y docker.io
 
 sudo apt install -y docker-compose
 
+sudo mkdir blackbox prometheus grafana
+
 EOF
 
 
