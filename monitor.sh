@@ -9,15 +9,19 @@ a=$(aws ec2 describe-instances --region ap-south-1 --filters "Name=tag:Env,Value
 
 sed -i "s/EC2_ip/$a/g" prometheus.yml
 
-scp -o StrictHostKeyChecking=no -i "$SSH_KEY" blackbox.yml "$ubuntu"@$a:/home/ubuntu/blackbox
+scp -o StrictHostKeyChecking=no -i "$SSH_KEY" blackbox.yml "$ubuntu"@$a:/home/ubuntu
 
-scp -o StrictHostKeyChecking=no -i "$SSH_KEY" prometheus.yml "$ubuntu"@$a:/home/ubuntu/prometheus
+scp -o StrictHostKeyChecking=no -i "$SSH_KEY" prometheus.yml "$ubuntu"@$a:/home/ubuntu
 
-scp -o StrictHostKeyChecking=no -i "$SSH_KEY" grafana.ini "$ubuntu"@$a:/home/ubuntu/grafana
+scp -o StrictHostKeyChecking=no -i "$SSH_KEY" grafana.ini "$ubuntu"@$a:/home/ubuntu
 
 scp -o StrictHostKeyChecking=no -i "$SSH_KEY" docker-compose1.yml "$ubuntu"@$a:/home/ubuntu
 
 ssh -o StrictHostKeyChecking=no -i "$SSH_KEY" "$ubuntu"@$a <<EOF
+
+mv blackbox.yml blackbox/
+mv prometheus.yml prometheus/
+mv grafana.ini grafana/
 
 sudo docker-compose1 up -d
 
