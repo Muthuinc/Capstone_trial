@@ -8,3 +8,4 @@ build.sh
 blackbox.yml
 prometeheus.yml
 grafana.ini
+docker-compose1.yml
