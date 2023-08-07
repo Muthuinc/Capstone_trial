@@ -5,14 +5,14 @@ scrape_configs:
       module: [http_2xx]
     static_configs:
       - targets:
-        - http://192.168.225.182:80  
+        - http://EC2_ip:80  
     relabel_configs:
       - source_labels: [__address__]
         target_label: __param_target
       - source_labels: [__param_target]
         target_label: instance
       - target_label: __address__
-        replacement: 192.168.225.182:9115  
+        replacement: EC2_ip:9115  
 
   - job_name: 'prometheus'
     static_configs:
@@ -24,4 +24,4 @@ scrape_configs:
     # machine by default.
     static_configs:
       - targets:
-        - 192.168.225.182:9100
+        - EC2_ip:9100
