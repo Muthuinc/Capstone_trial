@@ -5,3 +5,6 @@ main.tf
 make.sh
 build.sh
 .env
+blackbox.yml
+prometeheus.yml
+grafana.ini
