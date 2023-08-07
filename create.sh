@@ -7,7 +7,7 @@ terraform init && terraform apply --auto-approve
 
 echo " success"
 
-#sleep 10
+sleep 10
 
 a=$(aws ec2 describe-instances --region ap-south-1 --filters "Name=tag:Env,Values=prod" --query 'Reservations[].Instances[].PublicIpAddress' --output text)
 
