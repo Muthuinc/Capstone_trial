@@ -27,6 +27,8 @@ sudo apt install -y docker-compose
 
 sudo mkdir blackbox prometheus grafana
 
+sudo usermod -aG ubuntu jenkins
+
 EOF
 
 
