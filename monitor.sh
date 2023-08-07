@@ -19,10 +19,8 @@ scp -o StrictHostKeyChecking=no -i "$SSH_KEY" docker-compose1.yml "$ubuntu"@$a:/
 
 ssh -o StrictHostKeyChecking=no -i "$SSH_KEY" "$ubuntu"@$a <<EOF
 
-mv blackbox.yml blackbox/
-mv prometheus.yml prometheus/
-mv grafana.ini grafana/
 
-sudo docker-compose1 up -d
+sudo docker-compose -f docker-compose1.yml up -d
+
 
 EOF
