@@ -42,19 +42,18 @@ pipeline {
                }
             }
         }
+
+        stage ('monitor') {
+            steps{ 
+               script {
+                    withCredentials([sshUserPrivateKey(credentialsId: 'Avamumbai', keyFileVariable: 'SSH_KEY', usernameVariable: 'ubuntu')]) {
+                        sh "./monitor.sh  "
+                    }
+               }
+            }
+        }
     }
 }
 
-        //stage ('monitor') {
-        //    when {
-        //        changelog 'blackbox.yml'
-        //    }
-        //    steps{ 
-        //       script {
-        //            withCredentials([sshUserPrivateKey(credentialsId: 'Avamumbai', keyFileVariable: 'SSH_KEY', usernameVariable: 'ubuntu')]) {
-        //                sh "./monitor.sh '$SSH_KEY' "
-        //            }
-        //       }
-        //    }
-        //}
+        
 
